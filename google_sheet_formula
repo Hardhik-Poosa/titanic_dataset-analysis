@@ -1,0 +1,41 @@
+What is the average age of the passengers?
+The average age of the passengers is 39.60.
+Formula: df['Age'].mean()
+
+Which passenger class (Pclass) has the highest number of passengers?
+Passenger Class 3 has the highest number of passengers with 41 passengers.
+Formula: df['Pclass'].value_counts().idxmax()
+
+How many passengers were traveling alone?
+There are 53 passengers traveling alone.
+Formula: df['TravelingAlone'].value_counts()[1]
+
+What percentage of passengers survived?
+The percentage of passengers who survived is 38.00%.
+Formula: (df['Survived'].sum() / len(df)) * 100
+
+Which group had a better chance of survival?
+Based on the analysis:
+Survival Rate by Gender:
+Female: 72.73%
+Male: 20.25%
+Survival Rate by Pclass:
+Pclass 1: 68.29%
+Pclass 2: 40.00%
+Pclass 3: 21.95%
+Based on these rates, Female passengers and passengers in Pclass 1 had a better chance of survival.
+Formula for Gender: df.groupby('Gender')['Survived'].mean() * 100
+Formula for Pclass: df.groupby('Pclass')['Survived'].mean() * 100
+
+How many passengers embarked from Southampton?
+There are 55 passengers who embarked from Southampton.
+Formula: df['Embarked'].value_counts()['S']
+
+Among passengers aged below 18, which passenger class had the highest survival rate?
+Among passengers aged below 18, Pclass 2 had the highest survival rate of 100.00%.
+Formula: df[df['Age'] < 18].groupby('Pclass')['Survived'].mean().idxmax()
+
+
+Which combination had the best chance of survival?
+The combination of 'Female' and 'Pclass 1' had the best chance of survival with a survival rate of 100.00%.
+Formula: df.groupby(['Gender', 'Pclass'])['Survived'].mean().sort_values(ascending=Fal
